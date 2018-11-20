@@ -50,6 +50,7 @@ class Data:
         # Make pandas DataFram
         df = pd.DataFrame(data={'X_Data': x1,'Y_Data':y1},index = [i for i in range(0,20)])
         # Write out the Dataframe
+        print('Writing to data.example')
         df.to_csv('data.example',sep = ' ',index=False)
         # Altertative "purists" way
         with open('data.example2','w+') as writer:
@@ -76,13 +77,13 @@ class Data:
     def plot_data(self,save=False):
 
         fig, (ax1,ax2) = plt.subplots(1,2,figsize = (15,10))
-        ax1.scatter(x = self.df.X_Data, y = self.df.Y_Data,marker='*',color = 'steelblue')
+        ax1.scatter(x = self.df.X_Data, y = self.df.Y_Data,marker='D',color = 'peachpuff')
         ax1.set_xlabel('X data')
         ax1.set_ylabel('Y data')
         ax1.set_ylim([np.floor(self.df.Y_Data.min()),np.ceil(self.df.Y_Data.max())])
         ax1.set_title('Textfile Data')
         # named colors can be found here https://matplotlib.org/examples/color/named_colors.html
-
+        # available markers can be found here https://matplotlib.org/api/markers_api.html#module-matplotlib.markers
         ax2.set_title('Gridfile data')
         C = ax2.contourf(self.x,self.y,self.grid)
         plt.colorbar(C)
